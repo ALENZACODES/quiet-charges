@@ -82,7 +82,7 @@ test("calendar file is valid enough for calendar apps", () => {
   const ics = toICS(subs, d("2026-04-10"));
   assert.match(ics, /^BEGIN:VCALENDAR\r\n/);
   assert.match(ics, /DTSTART;VALUE=DATE:2026050\d/);
-  assert.match(ics, /GYM\\, DOWNTOWN/);
+  assert.match(ics, /Gym\\, Downtown/);
   assert.match(ics, /END:VCALENDAR$/);
 });
 
