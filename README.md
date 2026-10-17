@@ -1,5 +1,9 @@
 # Quiet Charges
 
+[![tests](https://github.com/ALENZACODES/quiet-charges/actions/workflows/tests.yml/badge.svg)](https://github.com/ALENZACODES/quiet-charges/actions/workflows/tests.yml)
+
+**Live:** https://alenzacodes.github.io/quiet-charges/ (add `?sample` to load the sample data)
+
 Subscriptions rarely announce a price increase. A streaming plan goes from $18.99 to $20.99, the gym adds $10, and nobody reads the email. Quiet Charges reads your bank or credit card export and shows:
 
 - every charge that repeats, weekly, every two weeks, monthly, every three months or yearly
@@ -10,11 +14,14 @@ Subscriptions rarely announce a price increase. A streaming plan goes from $18.9
 
 It runs entirely in your browser. The file is never uploaded.
 
-Live: https://alenzacodes.github.io/quiet-charges/ (add `?sample` to load the sample data)
-
 ![Quiet Charges with sample data](docs/screenshot-desktop.png)
 
+On a phone:
+
+<img src="docs/screenshot-mobile.png" alt="Mobile layout" width="300">
+
 ## How it works
+
 1. **Reading the file.** A small CSV parser handles quoted fields and both line-ending styles. It finds the date, description and amount columns from the header, or falls back to the headerless date, description, debit, credit, balance layout some banks use. Dates can be ISO or month/day/year.
 2. **Grouping by merchant.** Bank descriptions carry reference numbers and noise ("POS PURCHASE FITLAB GYM 00231"). These are stripped so the same merchant groups together.
 3. **Finding the rhythm.** For each merchant it takes the gaps between charges, uses the median gap to match a cadence, and only counts it as recurring if at least 75% of the gaps fit and there are enough charges (three, or two for yearly). Charges whose amounts vary more than threefold, like groceries, are left out.
@@ -30,11 +37,12 @@ All of this is in `src/engine.js`.
 then open http://localhost:8000/.
 
 ## Tests
+
 Needs Node 20 or later. No dependencies.
 
     node --test
 
-The tests cover CSV edge cases, date and amount parsing, both file layouts, merchant name cleaning, cadence detection, false positives from random spending, price increase and stopped-subscription detection, the sample file end to end, and the calendar file.
+12 tests cover CSV edge cases, date and amount parsing, both file layouts, merchant name cleaning, cadence detection, false positives from random spending, price increase and stopped-subscription detection, the sample file end to end, and the calendar file. They run on every push through GitHub Actions.
 
 ## Sample data
 `src/sample.csv` is made up. The merchant names are fictional.
