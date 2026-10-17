@@ -44,6 +44,20 @@ Needs Node 20 or later. No dependencies.
 
 12 tests cover CSV edge cases, date and amount parsing, both file layouts, merchant name cleaning, cadence detection, false positives from random spending, price increase and stopped-subscription detection, the sample file end to end, and the calendar file. They run on every push through GitHub Actions.
 
+## Files
+
+    index.html              the page
+    src/engine.js           CSV parsing, merchant grouping, cadence and price-increase detection, calendar file
+    src/app.js              the interface
+    src/style.css
+    src/sample.csv          made-up sample statement
+    tests/engine.test.js    unit tests
+
+## Limits
+
+- A subscription billed at irregular dates, or under a changing merchant name, may be missed.
+- Amounts in foreign currency are read as they appear in the export.
+
 ## Sample data
 `src/sample.csv` is made up. The merchant names are fictional.
 
