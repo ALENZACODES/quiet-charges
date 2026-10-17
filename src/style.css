@@ -1,12 +1,12 @@
 :root {
-  --bg: #0f1720;
-  --panel: #16212d;
-  --ink: #e8eef4;
-  --muted: #9fb0c0;
-  --line: #26364a;
-  --accent: #7dd3a8;
-  --warn: #f2a65a;
-  --bad: #ef6f6c;
+  --bg: var(--w-cream);
+  --panel: var(--w-paper);
+  --ink: var(--w-ink);
+  --muted: var(--w-muted);
+  --line: var(--w-line);
+  --accent: var(--w-navy);
+  --warn: var(--w-warn);
+  --bad: var(--w-bad);
 }
 * {
   box-sizing: border-box;
@@ -28,10 +28,18 @@ body {
   padding: 0 20px;
 }
 header {
-  padding: 40px 20px 10px;
+  padding: 40px 0 26px;
+}
+header.w-wave {
+  background-image: url("theme/wave-lines.svg");
+}
+header.w-wave .lead {
+  color: var(--w-on-navy-muted);
 }
 h1 {
-  font-size: 2.3rem;
+  font-family: var(--w-serif);
+  font-weight: 600;
+  font-size: 2.6rem;
   margin: 0;
   letter-spacing: -0.02em;
 }
@@ -40,7 +48,7 @@ h1::after {
   display: block;
   width: 56px;
   height: 4px;
-  background: var(--accent);
+  background: var(--w-red);
   margin-top: 10px;
   border-radius: 2px;
 }
@@ -70,7 +78,7 @@ h2 {
 .btn {
   display: inline-block;
   background: var(--accent);
-  color: #0b1a12;
+  color: #fff;
   border: 0;
   border-radius: 10px;
   padding: 11px 18px;
@@ -85,7 +93,7 @@ h2 {
   border: 1.5px solid var(--line);
 }
 .btn:focus-visible {
-  outline: 3px solid #fff;
+  outline: 3px solid var(--w-red);
   outline-offset: 2px;
 }
 .note {
@@ -125,7 +133,7 @@ h2 {
   color: var(--warn);
 }
 .callout {
-  background: rgba(242, 166, 90, 0.1);
+  background: rgba(153, 0, 0, 0.06);
   border-left: 4px solid var(--warn);
   padding: 12px 14px;
   border-radius: 0 10px 10px 0;
@@ -184,7 +192,7 @@ td input {
   font-size: 0.78rem;
   padding: 1px 8px;
   border-radius: 999px;
-  background: rgba(242, 166, 90, 0.15);
+  background: rgba(138, 90, 0, 0.12);
   color: var(--warn);
   margin-left: 6px;
   white-space: nowrap;
@@ -232,4 +240,21 @@ footer {
   color: var(--muted);
   font-size: 0.9rem;
   padding: 40px 20px 60px;
+}
+
+/* Navy and red wave theme (see theme/waves.css) */
+h2 {
+  font-family: var(--w-serif);
+  font-weight: 600;
+  font-size: 1.4rem;
+}
+a {
+  color: var(--w-navy);
+}
+.btn.alt {
+  color: var(--w-navy);
+}
+.foot-sign .w-script {
+  font-size: 1.7em;
+  vertical-align: -0.15em;
 }

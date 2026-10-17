@@ -5,19 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="author" content="John Khan" />
     <title>Quiet Charges: find the subscriptions hiding in your bank statement</title>
+    <meta property="og:title" content="Quiet Charges" />
+    <meta
+      property="og:description"
+      content="Find the subscriptions hiding in your bank statement, and the ones that raised their price."
+    />
+    <meta property="og:image" content="https://alenzacodes.github.io/quiet-charges/docs/social-preview.png" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="description"
       content="Drop in a bank CSV. Quiet Charges finds every recurring charge, flags price increases, and shows what you'd save by cancelling. Runs entirely in your browser."
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;600;700&family=Pinyon+Script&display=swap"
+    />
+    <link rel="stylesheet" href="src/theme/waves.css" />
     <link rel="stylesheet" href="src/style.css" />
   </head>
   <body>
-    <header class="wrap">
-      <h1>Quiet Charges</h1>
-      <p class="lead">
-        Drop in a bank or credit card export. See every subscription, which ones quietly raised their price, and what's
-        coming out next. Your file never leaves this page.
-      </p>
+    <header class="w-wave">
+      <div class="wrap">
+        <h1>Quiet Charges</h1>
+        <p class="lead">
+          Drop in a bank or credit card export. See every subscription, which ones quietly raised their price, and
+          what's coming out next. Your file never leaves this page.
+        </p>
+      </div>
     </header>
     <main class="wrap">
       <section id="drop" class="drop" tabindex="0" aria-label="Choose or drop a CSV file">
@@ -76,7 +92,10 @@
     </main>
     <footer class="wrap">
       <p>Nothing is uploaded. Parsing and detection run in your browser and disappear when you close the tab.</p>
-      <p>Made by John Khan. <a href="https://github.com/ALENZACODES/quiet-charges">Source code</a> (MIT licence).</p>
+      <p class="foot-sign">
+        Made by <span class="w-script">John Khan</span>.
+        <a href="https://github.com/ALENZACODES/quiet-charges">Source code</a> (MIT licence).
+      </p>
     </footer>
     <script type="module" src="src/app.js"></script>
   </body>

@@ -1,3 +1,5 @@
+![Quiet Charges banner](docs/banner.png)
+
 # Quiet Charges
 
 [![tests](https://github.com/ALENZACODES/quiet-charges/actions/workflows/tests.yml/badge.svg)](https://github.com/ALENZACODES/quiet-charges/actions/workflows/tests.yml)
