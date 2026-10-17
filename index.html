@@ -1,58 +1,83 @@
 <!doctype html>
 <html lang="en-CA">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="author" content="John Khan">
-<title>Quiet Charges: find the subscriptions hiding in your bank statement</title>
-<meta name="description" content="Drop in a bank CSV. Quiet Charges finds every recurring charge, flags price increases, and shows what you'd save by cancelling. Runs entirely in your browser.">
-<link rel="stylesheet" href="src/style.css">
-</head>
-<body>
-<header class="wrap">
-  <h1>Quiet Charges</h1>
-  <p class="lead">Drop in a bank or credit card export. See every subscription, which ones quietly raised their price, and what's coming out next. Your file never leaves this page.</p>
-</header>
-<main class="wrap">
-  <section id="drop" class="drop" tabindex="0" aria-label="Choose or drop a CSV file">
-    <p><strong>Drop a CSV file here</strong> or</p>
-    <label class="btn">Choose file<input id="file" type="file" accept=".csv,text/csv" hidden></label>
-    <button id="sample" class="btn alt" type="button">Try sample data</button>
-    <p class="note">Works with most Canadian bank exports: a header row with date, description and amount (or debit and credit), or the headerless date, description, debit, credit layout.</p>
-    <p id="status" role="status"></p>
-  </section>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="John Khan" />
+    <title>Quiet Charges: find the subscriptions hiding in your bank statement</title>
+    <meta
+      name="description"
+      content="Drop in a bank CSV. Quiet Charges finds every recurring charge, flags price increases, and shows what you'd save by cancelling. Runs entirely in your browser."
+    />
+    <link rel="stylesheet" href="src/style.css" />
+  </head>
+  <body>
+    <header class="wrap">
+      <h1>Quiet Charges</h1>
+      <p class="lead">
+        Drop in a bank or credit card export. See every subscription, which ones quietly raised their price, and what's
+        coming out next. Your file never leaves this page.
+      </p>
+    </header>
+    <main class="wrap">
+      <section id="drop" class="drop" tabindex="0" aria-label="Choose or drop a CSV file">
+        <p><strong>Drop a CSV file here</strong> or</p>
+        <label class="btn">Choose file<input id="file" type="file" accept=".csv,text/csv" hidden /></label>
+        <button id="sample" class="btn alt" type="button">Try sample data</button>
+        <p class="note">
+          Works with most Canadian bank exports: a header row with date, description and amount (or debit and credit),
+          or the headerless date, description, debit, credit layout.
+        </p>
+        <p id="status" role="status"></p>
+      </section>
 
-  <section id="out" hidden>
-    <div class="stats">
-      <div class="stat"><span id="sCount">0</span><small>active subscriptions</small></div>
-      <div class="stat"><span id="sMonthly">$0</span><small>a month</small></div>
-      <div class="stat"><span id="sAnnual">$0</span><small>a year</small></div>
-      <div class="stat warn"><span id="sRaised">0</span><small>raised their price</small></div>
-    </div>
-    <p id="raisedLine" class="callout"></p>
+      <section id="out" hidden>
+        <div class="stats">
+          <div class="stat"><span id="sCount">0</span><small>active subscriptions</small></div>
+          <div class="stat"><span id="sMonthly">$0</span><small>a month</small></div>
+          <div class="stat"><span id="sAnnual">$0</span><small>a year</small></div>
+          <div class="stat warn"><span id="sRaised">0</span><small>raised their price</small></div>
+        </div>
+        <p id="raisedLine" class="callout"></p>
 
-    <h2>Coming out in the next 30 days</h2>
-    <ol id="upcoming" class="timeline"></ol>
+        <h2>Coming out in the next 30 days</h2>
+        <ol id="upcoming" class="timeline"></ol>
 
-    <h2>Everything that repeats</h2>
-    <p class="note">Tick the ones you plan to cancel. The savings update as you go.</p>
-    <div class="tablewrap"><table>
-      <thead><tr><th scope="col">Cancel?</th><th scope="col">Merchant</th><th scope="col">How often</th><th scope="col">Last charge</th><th scope="col">Per year</th><th scope="col">Next</th></tr></thead>
-      <tbody id="rows"></tbody>
-    </table></div>
-    <div class="save"><span>If you cancel what you ticked, you keep</span><strong id="saveAmt">$0 a year</strong></div>
-    <div class="actions">
-      <button id="ics" class="btn" type="button">Add reminders to my calendar</button>
-      <button id="csv" class="btn alt" type="button">Download the list (CSV)</button>
-    </div>
-    <p class="note">Reminders land three days before each charge, so you have time to cancel.</p>
-    <details><summary>Stopped charges</summary><ul id="stopped"></ul></details>
-  </section>
-</main>
-<footer class="wrap">
-  <p>Nothing is uploaded. Parsing and detection run in your browser and disappear when you close the tab.</p>
-  <p>Made by John Khan. <a href="https://github.com/ALENZACODES/quiet-charges">Source code</a> (MIT licence).</p>
-</footer>
-<script type="module" src="src/app.js"></script>
-</body>
+        <h2>Everything that repeats</h2>
+        <p class="note">Tick the ones you plan to cancel. The savings update as you go.</p>
+        <div class="tablewrap">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Cancel?</th>
+                <th scope="col">Merchant</th>
+                <th scope="col">How often</th>
+                <th scope="col">Last charge</th>
+                <th scope="col">Per year</th>
+                <th scope="col">Next</th>
+              </tr>
+            </thead>
+            <tbody id="rows"></tbody>
+          </table>
+        </div>
+        <div class="save">
+          <span>If you cancel what you ticked, you keep</span><strong id="saveAmt">$0 a year</strong>
+        </div>
+        <div class="actions">
+          <button id="ics" class="btn" type="button">Add reminders to my calendar</button>
+          <button id="csv" class="btn alt" type="button">Download the list (CSV)</button>
+        </div>
+        <p class="note">Reminders land three days before each charge, so you have time to cancel.</p>
+        <details>
+          <summary>Stopped charges</summary>
+          <ul id="stopped"></ul>
+        </details>
+      </section>
+    </main>
+    <footer class="wrap">
+      <p>Nothing is uploaded. Parsing and detection run in your browser and disappear when you close the tab.</p>
+      <p>Made by John Khan. <a href="https://github.com/ALENZACODES/quiet-charges">Source code</a> (MIT licence).</p>
+    </footer>
+    <script type="module" src="src/app.js"></script>
+  </body>
 </html>

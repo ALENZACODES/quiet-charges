@@ -4,18 +4,25 @@
 // ---------- CSV ----------
 export function parseCSV(text) {
   const rows = [];
-  let row = [], field = "", q = false;
+  let row = [],
+    field = "",
+    q = false;
   for (let i = 0; i < text.length; i++) {
     const ch = text[i];
     if (q) {
-      if (ch === '"' && text[i + 1] === '"') { field += '"'; i++; }
-      else if (ch === '"') q = false;
+      if (ch === '"' && text[i + 1] === '"') {
+        field += '"';
+        i++;
+      } else if (ch === '"') q = false;
       else field += ch;
     } else if (ch === '"') q = true;
-    else if (ch === ",") { row.push(field); field = ""; }
-    else if (ch === "\n" || ch === "\r") {
+    else if (ch === ",") {
+      row.push(field);
+      field = "";
+    } else if (ch === "\n" || ch === "\r") {
       if (ch === "\r" && text[i + 1] === "\n") i++;
-      row.push(field); field = "";
+      row.push(field);
+      field = "";
       if (row.some((c) => c.trim() !== "")) rows.push(row);
       row = [];
     } else field += ch;
@@ -51,7 +58,12 @@ export function toTransactions(rows) {
   if (!rows.length) return [];
   const head = rows[0].map((h) => h.toLowerCase().trim());
   const has = (re) => head.findIndex((h) => re.test(h));
-  let start = 0, di, de, am, debit = -1, credit = -1;
+  let start = 0,
+    di,
+    de,
+    am,
+    debit = -1,
+    credit = -1;
   if (head.some((h) => /date/.test(h))) {
     start = 1;
     di = has(/date/);
@@ -61,7 +73,11 @@ export function toTransactions(rows) {
     credit = has(/credit|deposit/);
     if (de < 0) de = has(/memo|narrative/);
   } else {
-    di = 0; de = 1; debit = 2; credit = 3; am = -1;
+    di = 0;
+    de = 1;
+    debit = 2;
+    credit = 3;
+    am = -1;
   }
   const out = [];
   for (const r of rows.slice(start)) {
@@ -70,7 +86,8 @@ export function toTransactions(rows) {
     let amount;
     if (am >= 0 && r[am] !== undefined && r[am].trim() !== "") amount = parseAmount(r[am]);
     else {
-      const d = parseAmount(r[debit]), c = parseAmount(r[credit]);
+      const d = parseAmount(r[debit]),
+        c = parseAmount(r[credit]);
       amount = d ? -Math.abs(d) : c ? Math.abs(c) : null;
     }
     if (amount === null) continue;
@@ -83,10 +100,14 @@ export function toTransactions(rows) {
 }
 
 // ---------- Merchant names ----------
-const NOISE = /\b(pos|purchase|pre-?auth(orized)?|recurring|payment|pymt|debit|visa|mc|interac|e-?transfer|www|com|ca|inc|ltd|llc|corp|the|online|bill|pay)\b/g;
+const NOISE =
+  /\b(pos|purchase|pre-?auth(orized)?|recurring|payment|pymt|debit|visa|mc|interac|e-?transfer|www|com|ca|inc|ltd|llc|corp|the|online|bill|pay)\b/g;
 export function merchantKey(desc) {
   let s = String(desc).toLowerCase();
-  s = s.replace(/https?:\/\//g, " ").replace(/\*+/g, " ").replace(/[#]\s*\d+/g, " ");
+  s = s
+    .replace(/https?:\/\//g, " ")
+    .replace(/\*+/g, " ")
+    .replace(/[#]\s*\d+/g, " ");
   s = s.replace(/\b[a-z]*\d[a-z\d]*\b/g, " "); // reference numbers like 12345 or ab12cd
   s = s.replace(/[^a-z& ]+/g, " ").replace(NOISE, " ");
   s = s.replace(/\s+/g, " ").trim();
@@ -103,7 +124,11 @@ export const CADENCES = [
   { id: "yearly", days: 365.25, tol: 12, perYear: 1 },
 ];
 
-const median = (a) => { const s = [...a].sort((x, y) => x - y); const m = s.length >> 1; return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2; };
+const median = (a) => {
+  const s = [...a].sort((x, y) => x - y);
+  const m = s.length >> 1;
+  return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2;
+};
 
 export function detectCadence(dates) {
   if (dates.length < 2) return null;
@@ -119,7 +144,12 @@ export function detectCadence(dates) {
 }
 
 export function displayName(desc) {
-  const s = String(desc).replace(/[#*]\s*\d*/g, " ").replace(/\b(pre-?auth(orized)?|pos|purchase)\b/gi, " ").replace(/\s+\d{3,}\b/g, " ").replace(/\s+/g, " ").trim();
+  const s = String(desc)
+    .replace(/[#*]\s*\d*/g, " ")
+    .replace(/\b(pre-?auth(orized)?|pos|purchase)\b/gi, " ")
+    .replace(/\s+\d{3,}\b/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
   return s ? s.toLowerCase().replace(/(^|\s)\S/g, (c) => c.toUpperCase()) : String(desc);
 }
 
@@ -143,7 +173,8 @@ export function findRecurring(txns, { today = new Date() } = {}) {
     if (spread > 3) continue; // too variable to be a subscription (groceries, gas)
     const increases = [];
     for (let i = 1; i < list.length; i++) {
-      const a = list[i - 1].charge, b = list[i].charge;
+      const a = list[i - 1].charge,
+        b = list[i].charge;
       if (b > a * 1.02 && b - a >= 0.5) increases.push({ date: list[i].date, from: a, to: b });
     }
     const last = list[list.length - 1].date;
@@ -175,23 +206,28 @@ export function summarize(subs) {
     monthly: active.reduce((t, s) => t + s.annual / 12, 0),
     annual: active.reduce((t, s) => t + s.annual, 0),
     raised: active.filter((s) => s.increases.length).length,
-    raisedCost: active.reduce((t, s) => t + (s.last - s.first) * (CADENCES.find((c) => c.id === s.cadence).perYear), 0),
+    raisedCost: active.reduce((t, s) => t + (s.last - s.first) * CADENCES.find((c) => c.id === s.cadence).perYear, 0),
   };
 }
 
 // ---------- Calendar reminders ----------
 const icsDate = (d) => d.toISOString().slice(0, 10).replace(/-/g, "");
-const esc = (s) => String(s).replace(/[\\;,]/g, (m) => "\\" + m).replace(/\n/g, " ");
+const esc = (s) =>
+  String(s)
+    .replace(/[\\;,]/g, (m) => "\\" + m)
+    .replace(/\n/g, " ");
 export function toICS(subs, stamp = new Date()) {
   const lines = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//John Khan//Quiet Charges//EN", "CALSCALE:GREGORIAN"];
   for (const s of subs.filter((x) => x.active)) {
     const remind = new Date(s.nextDate.getTime() - 3 * DAY);
-    lines.push("BEGIN:VEVENT",
+    lines.push(
+      "BEGIN:VEVENT",
       `UID:${s.key.replace(/\s/g, "-")}-${icsDate(s.nextDate)}@quiet-charges`,
       `DTSTAMP:${stamp.toISOString().replace(/[-:]/g, "").slice(0, 15)}Z`,
       `DTSTART;VALUE=DATE:${icsDate(remind)}`,
       `SUMMARY:${esc(`Decide: keep ${s.name}? Charge of $${s.last.toFixed(2)} in 3 days`)}`,
-      "END:VEVENT");
+      "END:VEVENT",
+    );
   }
   lines.push("END:VCALENDAR");
   return lines.join("\r\n");

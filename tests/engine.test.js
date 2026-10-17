@@ -1,12 +1,26 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { displayName, parseCSV, parseDate, parseAmount, toTransactions, merchantKey, detectCadence, findRecurring, summarize, toICS } from "../src/engine.js";
+import {
+  displayName,
+  parseCSV,
+  parseDate,
+  parseAmount,
+  toTransactions,
+  merchantKey,
+  detectCadence,
+  findRecurring,
+  summarize,
+  toICS,
+} from "../src/engine.js";
 
 const d = (s) => new Date(s + "T00:00:00Z");
 
 test("CSV handles quotes, commas and CRLF", () => {
-  assert.deepEqual(parseCSV('a,"b, c","say ""hi"""\r\n1,2,3\r\n'), [["a", "b, c", 'say "hi"'], ["1", "2", "3"]]);
+  assert.deepEqual(parseCSV('a,"b, c","say ""hi"""\r\n1,2,3\r\n'), [
+    ["a", "b, c", 'say "hi"'],
+    ["1", "2", "3"],
+  ]);
 });
 
 test("dates: ISO and M/D/YYYY, rejects impossible dates", () => {
@@ -25,8 +39,13 @@ test("amounts: signs, brackets, dollar signs, thousands", () => {
 });
 
 test("header layout with a single amount column", () => {
-  const tx = toTransactions(parseCSV("Date,Description,Amount\n2026-01-01,GYM,-50\n2026-01-02,PAY,2000\n2026-01-03,CAFE,-4"));
-  assert.deepEqual(tx.map((t) => t.charge), [50, 4]);
+  const tx = toTransactions(
+    parseCSV("Date,Description,Amount\n2026-01-01,GYM,-50\n2026-01-02,PAY,2000\n2026-01-03,CAFE,-4"),
+  );
+  assert.deepEqual(
+    tx.map((t) => t.charge),
+    [50, 4],
+  );
 });
 
 test("headerless TD-style layout: date, description, debit, credit, balance", () => {
@@ -52,7 +71,8 @@ test("cadence detection", () => {
 
 test("finds price increases and stopped subscriptions", () => {
   const rows = [];
-  for (let m = 0; m < 8; m++) rows.push({ date: new Date(Date.UTC(2026, m, 5)), desc: "STREAM TV", charge: m < 4 ? 18.99 : 20.99 });
+  for (let m = 0; m < 8; m++)
+    rows.push({ date: new Date(Date.UTC(2026, m, 5)), desc: "STREAM TV", charge: m < 4 ? 18.99 : 20.99 });
   for (let m = 0; m < 4; m++) rows.push({ date: new Date(Date.UTC(2026, m, 9)), desc: "OLD APP", charge: 5 });
   const subs = findRecurring(rows, { today: d("2026-09-10") });
   const tv = subs.find((s) => s.key === "stream tv");
@@ -63,7 +83,11 @@ test("finds price increases and stopped subscriptions", () => {
 });
 
 test("groceries at random intervals are not subscriptions", () => {
-  const rows = [3, 9, 10, 22, 40, 41, 70, 95].map((n, i) => ({ date: new Date(Date.UTC(2026, 0, n)), desc: "FRESHMART " + i, charge: 20 + i * 13 }));
+  const rows = [3, 9, 10, 22, 40, 41, 70, 95].map((n, i) => ({
+    date: new Date(Date.UTC(2026, 0, n)),
+    desc: "FRESHMART " + i,
+    charge: 20 + i * 13,
+  }));
   assert.equal(findRecurring(rows).length, 0);
 });
 
@@ -71,14 +95,25 @@ test("sample file end to end", () => {
   const tx = toTransactions(parseCSV(readFileSync(new URL("../src/sample.csv", import.meta.url), "utf8")));
   const subs = findRecurring(tx, { today: d("2026-10-15") });
   const keys = subs.map((s) => s.key).sort();
-  assert.deepEqual(keys, ["cloudbox storage", "fitlab gym", "mealkit weekly", "newsdesk annual", "northwave music", "phoneco wireless", "streamnorth tv"]);
+  assert.deepEqual(keys, [
+    "cloudbox storage",
+    "fitlab gym",
+    "mealkit weekly",
+    "newsdesk annual",
+    "northwave music",
+    "phoneco wireless",
+    "streamnorth tv",
+  ]);
   const sum = summarize(subs);
   assert.equal(sum.count, 6);
   assert.equal(sum.raised, 4);
 });
 
 test("calendar file is valid enough for calendar apps", () => {
-  const subs = findRecurring([0, 1, 2, 3].map((m) => ({ date: new Date(Date.UTC(2026, m, 5)), desc: "GYM, DOWNTOWN", charge: 50 })), { today: d("2026-04-10") });
+  const subs = findRecurring(
+    [0, 1, 2, 3].map((m) => ({ date: new Date(Date.UTC(2026, m, 5)), desc: "GYM, DOWNTOWN", charge: 50 })),
+    { today: d("2026-04-10") },
+  );
   const ics = toICS(subs, d("2026-04-10"));
   assert.match(ics, /^BEGIN:VCALENDAR\r\n/);
   assert.match(ics, /DTSTART;VALUE=DATE:2026050\d/);
