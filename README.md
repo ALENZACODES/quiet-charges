@@ -2,7 +2,9 @@
 
 # Quiet Charges
 
-[![tests](https://github.com/ALENZACODES/quiet-charges/actions/workflows/tests.yml/badge.svg)](https://github.com/ALENZACODES/quiet-charges/actions/workflows/tests.yml)
+**Find the subscriptions hiding in your bank statement, and the ones that quietly raised their price. Runs in your browser.**
+
+[![Live demo](https://img.shields.io/badge/live_demo-open-011F5B?style=flat-square)](https://alenzacodes.github.io/quiet-charges/) [![Licence: MIT](https://img.shields.io/badge/licence-MIT-990000?style=flat-square)](LICENSE) ![Built with JavaScript](https://img.shields.io/badge/built_with-JavaScript-4a4a4a?style=flat-square) [![tests](https://github.com/ALENZACODES/quiet-charges/actions/workflows/tests.yml/badge.svg)](https://github.com/ALENZACODES/quiet-charges/actions/workflows/tests.yml)
 
 **Live:** https://alenzacodes.github.io/quiet-charges/ (add `?sample` to load the sample data)
 
@@ -22,7 +24,7 @@ On a phone:
 
 <img src="docs/screenshot-mobile.png" alt="Mobile layout" width="300">
 
-## How it works
+## What it does
 
 1. **Reading the file.** A small CSV parser handles quoted fields and both line-ending styles. It finds the date, description and amount columns from the header, or falls back to the headerless date, description, debit, credit, balance layout some banks use. Dates can be ISO or month/day/year.
 2. **Grouping by merchant.** Bank descriptions carry reference numbers and noise ("POS PURCHASE FITLAB GYM 00231"). These are stripped so the same merchant groups together.
@@ -32,7 +34,11 @@ On a phone:
 
 All of this is in `src/engine.js`.
 
-## Run it
+## Sample data
+
+`src/sample.csv` is made up. The merchant names are fictional.
+
+## Quick start
 
     python3 -m http.server 8000
 
@@ -46,6 +52,11 @@ Needs Node 20 or later. No dependencies.
 
 12 tests cover CSV edge cases, date and amount parsing, both file layouts, merchant name cleaning, cadence detection, false positives from random spending, price increase and stopped-subscription detection, the sample file end to end, and the calendar file. They run on every push through GitHub Actions.
 
+## Limits
+
+- A subscription billed at irregular dates, or under a changing merchant name, may be missed.
+- Amounts in foreign currency are read as they appear in the export.
+
 ## Files
 
     index.html              the page
@@ -55,13 +66,10 @@ Needs Node 20 or later. No dependencies.
     src/sample.csv          made-up sample statement
     tests/engine.test.js    unit tests
 
-## Limits
-
-- A subscription billed at irregular dates, or under a changing merchant name, may be missed.
-- Amounts in foreign currency are read as they appear in the export.
-
-## Sample data
-`src/sample.csv` is made up. The merchant names are fictional.
-
 ## Licence
+
 MIT. Copyright 2026 John Khan.
+
+---
+
+More of my work is on my [GitHub profile](https://github.com/ALENZACODES).
