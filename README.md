@@ -69,5 +69,21 @@ The browser check serves the site, loads it in headless Chrome, opens a cancel k
     python3 scripts/browser_check.py          # add --shots to refresh the screenshots
     python3 scripts/record_demo.py            # records the captioned demo video
 
+## Files
+
+    index.html                 the page, with its Content Security Policy
+    src/engine.js              readers, grouping, cadence, trials, duplicates, inflation, cancel messages, calendar file
+    src/catalog.js             36 services with statement patterns, cancel links and steps
+    src/cpi.js                 Statistics Canada CPI, January 2023 to September 2026
+    src/app.js                 the interface
+    src/style.css, src/theme/  styles and the shared navy and red theme
+    src/sample.csv             a made up sample year
+    tests/engine.test.js       36 unit tests
+    scripts/                   sample builder, browser check, demo recorder
+
 ## Licence
 MIT. Copyright 2026 John Khan.
+
+---
+
+More of my work is on my [GitHub profile](https://github.com/ALENZACODES).
