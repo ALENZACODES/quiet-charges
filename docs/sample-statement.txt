@@ -1,0 +1,81 @@
+CARD STATEMENT  Aug 29 to Oct 28, 2026
+TRANS   POST    DESCRIPTION                                AMOUNT ($)
+AUG 30  AUG 31  CRAVE BELL MEDIA                               22.00
+AUG 31  SEP 01  TIM HORTONS #1649                               5.85
+SEP 01  SEP 02  TIM HORTONS #2041                               4.41
+SEP 02  SEP 03  FARM BOY 22                                    97.52
+SEP 02  SEP 03  TIM HORTONS #5941                               8.25
+SEP 02  SEP 03  UBER CANADA/UBERTRIP                           28.97
+SEP 03  SEP 04  SPOTIFY PRSVLD9                                12.99
+SEP 04  SEP 05  GOODLIFE FITNESS CLUBS                         32.99
+SEP 06  SEP 07  TIM HORTONS #1147                               7.97
+SEP 07  SEP 08  FARM BOY 22                                    67.51
+SEP 07  SEP 08  GOOGLE *YouTubePremium                         13.99
+SEP 07  SEP 08  TIM HORTONS #5601                               3.88
+SEP 09  SEP 10  OPENAI *CHATGPT SUBSCR USD 20.00               27.58
+SEP 09  SEP 10  TIM HORTONS #2243                               2.64
+SEP 11  SEP 12  FARM BOY 22                                    92.34
+SEP 11  SEP 12  LCBO/RAO #0217                                 32.26
+SEP 11  SEP 12  PRESTO AUTOLD 228168                           20.00
+SEP 11  SEP 12  UBER CANADA/UBERTRIP                           38.65
+SEP 12  SEP 13  NETFLIX.COM 866-579-7172 ON                    20.99
+SEP 12  SEP 13  TIM HORTONS #2676                               3.90
+SEP 14  SEP 15  APPLE.COM/BILL 866-712-7753 ON                  4.49
+SEP 16  SEP 17  NO FRILLS 3321                                 65.95
+SEP 16  SEP 17  TIM HORTONS #5634                               7.35
+SEP 17  SEP 18  PRESTO AUTOLD 417731                           40.00
+SEP 17  SEP 18  TIM HORTONS #4175                               6.74
+SEP 18  SEP 19  GOODLIFE FITNESS CLUBS                         32.99
+SEP 20  SEP 21  AUDIBLE*GNPCXE                                 14.95
+SEP 20  SEP 21  TIM HORTONS #9007                               8.94
+SEP 21  SEP 22  LOBLAWS 1012                                   61.35
+SEP 21  SEP 22  PAYPAL *SPOTIFY                                12.99
+SEP 22  SEP 23  APPLE.COM/BILL 866-712-7753 ON                 14.99
+SEP 22  SEP 23  SHOPPERS DRUG MART #0789                       72.63
+SEP 22  SEP 23  TIM HORTONS #5697                               8.78
+SEP 24  SEP 25  TIM HORTONS #3081                               7.80
+SEP 26  SEP 27  ROGERS ******5678                              95.00
+SEP 26  SEP 27  TIM HORTONS #1030                               6.07
+SEP 28  SEP 29  LCBO/RAO #0217                                 44.09
+SEP 29  SEP 30  METRO 0456                                     71.69
+SEP 29  SEP 30  PRESTO AUTOLD 194887                           50.00
+SEP 29  SEP 30  TIM HORTONS #6029                               6.22
+SEP 29  SEP 30  UBER CANADA/UBERTRIP                           25.92
+SEP 30  OCT 01  CRAVE BELL MEDIA                               22.00
+OCT 02  OCT 03  GOODLIFE FITNESS CLUBS                         32.99
+OCT 02  OCT 03  TIM HORTONS #7496                               2.90
+OCT 03  OCT 04  SPOTIFY P8QYAA3                                12.99
+OCT 03  OCT 04  TIM HORTONS #2246                               2.70
+OCT 04  OCT 05  TIM HORTONS #3564                               6.17
+OCT 05  OCT 06  UBER CANADA/UBERTRIP                           28.73
+OCT 06  OCT 07  METRO 0456                                     65.27
+OCT 06  OCT 07  TIM HORTONS #3371                               7.98
+OCT 07  OCT 08  GOOGLE *YouTubePremium                         13.99
+OCT 09  OCT 10  LOBLAWS 1012                                   68.52
+OCT 09  OCT 10  OPENAI *CHATGPT SUBSCR USD 20.00               28.04
+OCT 10  OCT 11  PRESTO AUTOLD 417421                           20.00
+OCT 10  OCT 11  TIM HORTONS #2731                               7.09
+OCT 11  OCT 12  TIM HORTONS #2722                               8.07
+OCT 11  OCT 12  UBER CANADA/UBERTRIP                           13.86
+OCT 12  OCT 13  NETFLIX.COM 866-579-7172 ON                    20.99
+OCT 13  OCT 14  TIM HORTONS #2367                               5.64
+OCT 14  OCT 15  APPLE.COM/BILL 866-712-7753 ON                  4.49
+OCT 14  OCT 15  TIM HORTONS #8568                               4.24
+OCT 16  OCT 17  FARM BOY 22                                    81.40
+OCT 16  OCT 17  GOODLIFE FITNESS CLUBS                         32.99
+OCT 17  OCT 18  TIM HORTONS #1107                               2.44
+OCT 18  OCT 19  SHOPPERS DRUG MART #0789                       40.93
+OCT 18  OCT 19  TIM HORTONS #3400                               2.57
+OCT 19  OCT 20  TIM HORTONS #2927                               7.84
+OCT 20  OCT 21  AUDIBLE*KDCBLT                                 14.95
+OCT 21  OCT 22  PAYPAL *SPOTIFY                                12.99
+OCT 21  OCT 22  PRESTO AUTOLD 788611                           20.00
+OCT 21  OCT 22  TIM HORTONS #8458                               5.97
+OCT 22  OCT 23  APPLE.COM/BILL 866-712-7753 ON                 14.99
+OCT 24  OCT 25  LCBO/RAO #0217                                 27.35
+OCT 24  OCT 25  METRO 0456                                     41.31
+OCT 25  OCT 26  TIM HORTONS #6402                               8.90
+OCT 26  OCT 27  ROGERS ******5678                              95.00
+OCT 27  OCT 28  METRO 0456                                     88.61
+OCT 28  OCT 29  TIM HORTONS #9771                               4.05
+OCT 15  OCT 15  PAYMENT RECEIVED THANK YOU                    1,200.00 CR

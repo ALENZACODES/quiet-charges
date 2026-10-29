@@ -1,1 +1,15 @@
-{"type":"module","name":"quiet-charges","private":true,"scripts":{"test":"node --test"}}
+{
+  "type": "module",
+  "name": "quiet-charges",
+  "version": "2.0.0",
+  "description": "Find forgotten subscriptions, trials that turned into charges, double billing and price hikes above inflation in a bank statement, entirely in the browser.",
+  "author": "John Khan",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "test": "node --test",
+    "sample": "node scripts/make-sample.mjs",
+    "check": "python3 scripts/browser_check.py",
+    "serve": "python3 -m http.server 8000"
+  }
+}
