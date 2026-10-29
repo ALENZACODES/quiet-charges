@@ -1,6 +1,6 @@
 # Devpost submission: Quiet Charges (Next Byte Hacks V5)
 
-Paste each block into the matching field. Replace the two URL placeholders after the repo is public.
+Paste each block into the matching field. Only [YOUTUBE_URL] is left to fill.
 
 **Project name**
 Quiet Charges
@@ -12,8 +12,8 @@ Drop in your bank statement. Find forgotten subscriptions, trials that became ch
 javascript, html5, css3, node.js, playwright, github-pages, statistics-canada, ofx, icalendar
 
 **Try it out links**
-* [LIVE_URL] (for example https://alenzacodes.github.io/quiet-charges/?sample)
-* [REPO_URL] (for example https://github.com/ALENZACODES/quiet-charges)
+* https://alenzacodes.github.io/quiet-charges/?sample
+* https://github.com/ALENZACODES/quiet-charges
 
 **Video demo link**
 [YOUTUBE_URL]
@@ -90,8 +90,8 @@ Most of the work in a "simple" money tool is cleaning messy bank data. Comparing
 **Open source libraries**: none in the app. Playwright is used only for the optional browser check and demo recording.
 
 ## Before submitting (checklist for John)
-1. Make the repo public and turn on GitHub Pages from the main branch root.
+1. Done: the repo is public and GitHub Pages serves it from the master branch root.
 2. Open the live link with `?sample` and click through once.
 3. Upload docs/demo-captioned.mp4 to YouTube as Public or Unlisted (2:15), or record a voice-over with VIDEO_SCRIPT.md. The rules page asks for 2 to 5 minutes; the overview says 1 to 3, so 2:15 to 2:45 satisfies both.
-4. Replace [LIVE_URL], [REPO_URL] and [YOUTUBE_URL] above.
+4. Replace [YOUTUBE_URL] above.
 5. Upload the seven gallery images.
