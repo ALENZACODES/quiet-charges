@@ -53,7 +53,7 @@ function render() {
   const active = subs.filter((s) => s.active);
 
   const alerts = [];
-  for (const s of active.filter((x) => x.trial)) alerts.push({ cls: "bad", k: s.key, html: `<strong>${esc(s.name)}</strong> started as a ${money(s.trial.amount, 2)} trial on ${day(s.trial.date)} then switched to ${money(s.last, 2)} ${LABEL[s.cadence].toLowerCase()}. That's ${money(s.last * s.count, 2)} so far. If you didn't mean to keep it, cancel now and ask for a refund.` });
+  for (const s of active.filter((x) => x.trial)) alerts.push({ cls: "bad", k: s.key, html: `<strong>${esc(s.name)}</strong> started as a ${money(s.trial.amount, 2)} trial on ${day(s.trial.date)}, then switched to ${money(s.last, 2)} ${LABEL[s.cadence].toLowerCase()}. That's ${money(s.last * s.count, 2)} so far. If you didn't mean to keep it, cancel now and ask for a refund.` });
   const dupSeen = new Set();
   for (const s of active.filter((x) => x.duplicateOf)) {
     if (dupSeen.has(s.service.id)) continue; dupSeen.add(s.service.id);

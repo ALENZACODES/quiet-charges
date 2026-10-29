@@ -1,4 +1,8 @@
+![Quiet Charges banner](docs/banner.png)
+
 # Quiet Charges
+
+[![Live demo](https://img.shields.io/badge/live_demo-open-011F5B?style=flat-square)](https://alenzacodes.github.io/quiet-charges/?sample) [![Licence: MIT](https://img.shields.io/badge/licence-MIT-990000?style=flat-square)](LICENSE) ![Built with JavaScript](https://img.shields.io/badge/built_with-JavaScript-4a4a4a?style=flat-square) [![tests](https://github.com/ALENZACODES/quiet-charges/actions/workflows/tests.yml/badge.svg)](https://github.com/ALENZACODES/quiet-charges/actions/workflows/tests.yml)
 
 Your bank statement knows about every subscription you forgot. Quiet Charges reads it and tells you, in plain words:
 
@@ -16,6 +20,14 @@ It runs entirely in your browser. A Content Security Policy in the page stops it
 Live: https://alenzacodes.github.io/quiet-charges/ (add `?sample` to load a year of sample data)
 
 ![Look at these first: a trial that converted, a service paid twice, and prices that rose faster than inflation](docs/gallery-2-alerts.png)
+
+![The cancel kit with the official link, steps and a message](docs/gallery-4-cancel-kit.png)
+
+On a phone:
+
+<img src="docs/gallery-7-phone.png" alt="Quiet Charges on a phone" width="300">
+
+A 2 minute captioned demo is in [docs/demo-captioned.mp4](docs/demo-captioned.mp4).
 
 ## What it reads
 * **CSV** from Canadian banks and cards. It finds the date, description and amount columns from the header (RBC, BMO, Tangerine and similar layouts are tested), skips account details above the header, handles separate debit and credit columns, the headerless date, description, debit, credit layout (TD, CIBC), semicolons, and day first dates.

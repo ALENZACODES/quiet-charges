@@ -8,14 +8,21 @@
 <title>Quiet Charges: find the subscriptions hiding in your bank statement</title>
 <meta name="description" content="Drop in a bank export or paste a statement. Quiet Charges finds every subscription, free trials that turned into charges, services you pay for twice and price increases compared with inflation, then gives you the steps to cancel. It runs entirely in your browser.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%237dd3a8'/%3E%3Cpath d='M10 17l4 4 8-9' stroke='%230f1720' stroke-width='3' fill='none'/%3E%3C/svg%3E">
+<meta property="og:title" content="Quiet Charges">
+<meta property="og:description" content="Find forgotten subscriptions, trials that turned into charges, double billing and price hikes above inflation. Runs only in your browser.">
+<meta property="og:image" content="https://alenzacodes.github.io/quiet-charges/docs/social-preview.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="src/theme/waves.css">
 <link rel="stylesheet" href="src/style.css">
 </head>
 <body>
 <a class="skip" href="#main">Skip to the tool</a>
-<header class="wrap">
+<header class="w-wave">
+ <div class="wrap">
   <h1>Quiet Charges</h1>
   <p class="lead">Your bank statement knows about every subscription you forgot. Drop it in and see what repeats, which free trials turned into charges, what you pay for twice and which prices rose faster than inflation. Then cancel with the right link and a message ready to send.</p>
   <p class="lock" id="lock"><span aria-hidden="true">🔒</span> Network locked. A security policy built into this page stops it from contacting any other server. The only thing it can load is its own files, so your statement stays on your device.</p>
+ </div>
 </header>
 <main class="wrap" id="main">
   <section id="drop" class="drop" tabindex="0" aria-label="Choose or drop statement files">
