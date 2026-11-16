@@ -45,6 +45,36 @@ All of the logic is in `src/engine.js`, as pure functions that run the same in t
 5. **Inflation.** For each subscription that went up, it compares the rise with the all items CPI for Canada between the first and last charge, and works out what the price would be if it had only kept up with inflation.
 6. **New and stopped.** A subscription is called new only if the file reaches back far enough to have shown an earlier charge. One that missed two cycles is marked as stopped.
 
+## Project structure
+
+```text
+quiet-charges/
+├── .github/
+│   └── workflows/        # CI workflows (1 file)
+├── docs/                 # Banner, gallery, demo and sample statements (14 files)
+├── scripts/
+│   ├── browser_check.py  # Browser check
+│   ├── make-sample.mjs   # Builds the sample files
+│   └── record_demo.py    # Records the captioned demo
+├── src/
+│   ├── theme/            # Shared page theme (3 files)
+│   ├── app.js            # Interface logic
+│   ├── catalog.js        # Common Canadian subscriptions and how to cancel them
+│   ├── cpi.js            # Canada all-items CPI series
+│   ├── engine.js         # Reads bank exports and finds recurring charges
+│   ├── sample.csv        # Sample bank activity (invented)
+│   └── style.css         # Styles
+├── tests/                # Automated tests
+│   └── engine.test.js
+├── .gitignore
+├── DEVPOST.md            # Submission write-up
+├── index.html            # Page markup
+├── LICENSE               # Licence
+├── package.json          # npm scripts and dependencies
+├── README.md             # This file
+└── VIDEO_SCRIPT.md       # Demo video script
+```
+
 ## Data sources
 * `src/cpi.js`: Statistics Canada table 18-10-0004-01, all items CPI for Canada (vector V41690973), January 2023 to September 2026, read from the Bank of Canada Valet API on October 29, 2026.
 * `src/catalog.js`: 36 services. Every link was opened on October 29, 2026. The steps are short summaries; the linked page is the source of truth.
